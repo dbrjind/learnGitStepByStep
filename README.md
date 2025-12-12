@@ -52,32 +52,69 @@ git push -u origin main
 
 ---
 
-## **Day 2 — TBD**
+## **Day 2 — Introduction to Branching**
 
-* Topic: *To be updated*
-* Notes: *Will fill this in during learning.*
+* Topic: Learned how to create and switch branches in Git.
+* Commands practiced:
 
-## **Day 3 — TBD**
+  ```bash
+  git branch feature/test
+  git checkout feature/test
+  git switch -c experiment
+  ```
+* Notes: Understood why branches are useful for isolating work.
 
-* Topic: *To be updated*
-* Notes: *Will fill this in during learning.*
+## **Day 3 — Understanding Git Status & Git Diff**
 
-## **Day 4 — TBD**
+* Topic: Explored how Git tracks changes.
+* Commands practiced:
 
-* Topic: *To be updated*
-* Notes: *Will fill this in during learning.*
+  ```bash
+  git status
+  git diff
+  git diff --staged
+  ```
+* Notes: Learned difference between working directory, staging area, and committed history.
 
-## **Day 5 — TBD**
+## **Day 4 — Working With .gitignore**
 
-* Topic: *To be updated*
-* Notes: *Will fill this in during learning.*
+* Topic: Learned how to ignore specific files and folders.
+* Examples added:
 
-## **Day 6 — TBD**
+  ```
+  node_modules/
+  .DS_Store
+  *.log
+  ```
+* Notes: Helps keep unwanted files out of the repository.
 
-* Topic: *To be updated*
-* Notes: *Will fill this in during learning.*
+## **Day 5 — GitHub Pull Requests (PRs)**
 
-## **Day 7 — TBD**
+* Topic: Learned how to create and review pull requests.
+* Steps practiced:
 
-* Topic: *To be updated*
-* Notes: *Will fill this in during learning.*
+  * Pushed branch to GitHub
+  * Opened a Pull Request
+  * Added a description and assigned reviewers
+* Notes: Understood workflow for collaboration and code review.
+
+## **Day 6 — Merging & Resolving Conflicts**
+
+* Topic: Learned how to merge branches and resolve merge conflicts.
+* Commands practiced:
+
+  ```bash
+  git merge feature/test
+  git merge main
+  ```
+* Notes: Learned how to handle conflict markers (`<<<<<< >>>>>>`).
+
+## **Day 7 — GitHub Issues & Project Boards**
+
+* Topic: Learned how to create issues and track tasks.
+* Actions practiced:
+
+  * Created issues for future learning tasks
+  * Added labels and milestones
+  * Used GitHub Projects (Kanban board)
+* Notes: Helps organize and plan development work.
