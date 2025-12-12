@@ -1,0 +1,240 @@
+1. How to set up Git (local machine)
+
+What to do
+
+Install Git:
+
+macOS: brew install git (or download from git-scm.com)
+
+Windows: download Git for Windows and install (includes Git Bash)
+
+Linux: e.g. sudo apt install git or sudo dnf install git
+
+Configure your identity (one-time):
+
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+
+
+(Optional) Check config:
+
+git config --global --list
+
+
+(Recommended) Set your default branch name:
+
+git config --global init.defaultBranch main
+
+
+(Optional) Set up SSH keys for easier authentication:
+
+# generate
+ssh-keygen -t ed25519 -C "you@example.com"
+# start ssh agent and add key (macOS/Linux)
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+# then copy the public key and add to GitHub: ~/.ssh/id_ed25519.pub
+
+
+Tips
+
+Use SSH for passwordless pushes (after adding the public key to GitHub).
+
+Keep your user email the same as the one on GitHub to link commits to your account.
+2. How to create a repository on GitHub
+
+Via web UI
+
+Go to GitHub → New repository.
+
+Choose name, description (optional).
+
+Select Public/Private.
+
+Optionally add a README, .gitignore (e.g., Python), and a license.
+
+Click Create repository.
+
+Via GitHub CLI (gh)
+
+gh repo create my-diary --public --description "Daily learning diary"
+# follow prompts or pass flags like --private, --confirm
+
+
+What you’ll get
+
+A repo URL (HTTPS or SSH) for cloning, e.g. git@github.com:username/my-diary.git or https://github.com/username/my-diary.git.
+3. How to clone the created repo locally
+
+Command
+
+# HTTPS
+git clone https://github.com/username/my-diary.git
+
+# SSH (recommended if you added an SSH key)
+git clone git@github.com:username/my-diary.git
+
+
+After cloning
+
+cd my-diary
+git remote -v   # shows origin URL
+
+
+Tip
+If you started locally and want to connect to a GitHub repo:
+
+git remote add origin git@github.com:username/my-diary.git
+git push -u origin main   # set upstream branch
+
+4. How to add a new file to the repo
+
+Create a file
+
+# create README or diary entry
+echo "# My Learning Diary" > README.md
+mkdir diary
+echo "2025-12-13: Learned Git basics" > diary/2025-12-13.md
+
+
+Or use your code editor to create files.
+
+Check status
+
+git status
+
+
+Stage file(s)
+
+git add README.md
+git add diary/2025-12-13.md
+
+# stage everything (careful)
+git add .
+
+    5. How to commit changes
+
+Create a descriptive commit
+
+git commit -m "Add daily diary entry: Git & GitHub basics"
+
+
+Good commit message format (short + optional body)
+
+Short summary (50 chars or less)
+
+Longer description explaining what and why (optional).
+
+
+Useful commands
+
+git log --oneline    # compact commit history
+git show HEAD        # see latest commit diff
+git diff             # show unstaged changes
+
+
+Tips
+
+Commit often with small focused changes.
+
+Write clear messages: what changed and why.
+
+6. How to push changes to GitHub
+
+Push to remote
+
+# first push and set upstream (if branch not yet tracked)
+git push -u origin main
+
+# subsequent pushes
+git push
+
+
+If push is rejected
+
+git pull --rebase origin main  # get upstream changes and reapply local commits
+git push
+
+
+Verify
+
+git remote -v
+git branch -vv
+
+
+Tips
+
+Always git pull (or git fetch + git merge/rebase) before pushing if others change the repo.
+
+Use branches for new features: git checkout -b feature/diary-format.
+Extra tips & best practices
+
+.gitignore — ignore OS/editor files (e.g., .DS_Store, node_modules/). Example:
+
+# .gitignore
+.DS_Store
+*.log
+node_modules/
+
+
+README.md — explain the repo purpose and how to find the diary entries.
+
+Branching workflow — create feature/topic branches and open PRs to merge.
+
+Small commits — make each commit a logical unit.
+
+Rebase vs merge — prefer git pull --rebase for linear history if you’re comfortable.
+
+Check remote: git remote show origin shows branch tracking and remote info.
+
+Example diary entry (ready to paste)
+# 📘 Daily Learning Diary — 2025-12-13
+
+Today I learned the fundamentals of working with Git and GitHub:
+
+## 1. Set up Git
+- Installed Git and configured my user:
+
+
+git config --global user.name "My Name"
+git config --global user.email "me@example.com
+"
+git config --global init.defaultBranch main
+
+- Generated SSH key and added it to GitHub.
+
+## 2. Created repo on GitHub
+- Created `username/my-diary` via GitHub web UI.
+- Initialized with a README.
+
+## 3. Cloned repo locally
+
+
+git clone git@github.com
+:username/my-diary.git
+cd my-diary
+
+
+## 4. Added new file
+
+
+mkdir diary
+echo "2025-12-13: Learned Git basics" > diary/2025-12-13.md
+git add diary/2025-12-13.md
+
+
+## 5. Committed changes
+
+
+git commit -m "Add diary entry for 2025-12-13: Git basics"
+
+
+## 6. Pushed changes
+
+
+git push -u origin main
+
+
+### Notes
+- Remember to `git pull --rebase` before pushing if the remote has new commits.
+- Use meaningful commit messages.
